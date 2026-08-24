@@ -38,7 +38,7 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
             <p className="text-[11px] text-slate-400 font-medium flex items-center gap-1">
               <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#DCFD8B] animate-ping" />
-              Dual-Atmosphere AI
+              AI Dua Atmosfer
             </p>
           </div>
         </div>
@@ -53,17 +53,17 @@ export const Header: React.FC<HeaderProps> = ({
                 ? 'bg-[#251C33] text-[#BC84EE] border border-[#BC84EE]/50'
                 : 'bg-[#1C2B20] text-[#DCFD8B] border border-[#DCFD8B]/50'
             }`}
-            title="Toggle Atmosphere Mode"
+            title="Ganti Mode Atmosfer"
           >
             {isNight ? (
               <>
                 <Moon className="w-3.5 h-3.5" />
-                <span>Night Sky</span>
+                <span>Langit Malam</span>
               </>
             ) : (
               <>
                 <Sun className="w-3.5 h-3.5" />
-                <span>Day Air</span>
+                <span>Udara Siang</span>
               </>
             )}
           </button>
@@ -72,7 +72,7 @@ export const Header: React.FC<HeaderProps> = ({
           <button
             onClick={onLoadDemo}
             className="clay-button clay-button-slate text-xs py-1.5 px-3 flex items-center gap-1.5 active:scale-95 transition-transform"
-            title="Load Pre-filled National/Global Demo Scans"
+            title="Muat Data Demo Nasional/Global"
           >
             <Zap className="w-3.5 h-3.5 text-[#DCFD8B]" />
             <span className="font-bold hidden xs:inline">Demo</span>

@@ -57,12 +57,30 @@ export const AnalysisCard: React.FC<AnalysisCardProps> = ({
     gaugeGradient = 'from-[#DCFD8B] to-[#6AA115]';
   }
 
+  const translateCategory = (cat: string) => {
+    return cat
+      .replace(/Good/gi, 'Baik')
+      .replace(/Pristine Air/gi, 'Udara Sangat Bersih')
+      .replace(/Moderate/gi, 'Sedang')
+      .replace(/Sensitive/gi, 'Sensitif')
+      .replace(/Unhealthy/gi, 'Tidak Sehat')
+      .replace(/Smog Alert/gi, 'Peringatan Asap')
+      .replace(/Truly Dark Sky/gi, 'Langit Sangat Gelap')
+      .replace(/Typical/gi, 'Khas')
+      .replace(/Suburban Skyglow/gi, 'Pijar Langit Pinggiran Kota')
+      .replace(/Suburban/gi, 'Pinggiran Kota')
+      .replace(/Inner-City Skyglow/gi, 'Pijar Langit Dalam Kota')
+      .replace(/Inner-City/gi, 'Dalam Kota')
+      .replace(/Rural\/Suburban Transition/gi, 'Transisi Pedesaan/Pinggiran Kota');
+  };
+
   const handleShare = async () => {
-    const text = `ZeroDark Eco-Scan: ${primaryMetric.label} ${primaryMetric.value} (${primaryMetric.category}) at ${location?.locationName || 'Current Location'}. #ZeroDark #CleanSky`;
+    const translatedCat = translateCategory(primaryMetric.category);
+    const text = `ZeroDark Eco-Scan: ${primaryMetric.label === 'Estimated AQI' ? 'Perkiraan AQI' : 'Kelas Skala Bortle'} ${primaryMetric.value} (${translatedCat}) di ${location?.locationName || 'Lokasi Saat Ini'}. #ZeroDark #CleanSky`;
     if (navigator.share) {
       try {
         await navigator.share({
-          title: 'ZeroDark Environmental Scan',
+          title: 'Pemindaian Lingkungan ZeroDark',
           text,
           url: window.location.href,
         });
@@ -92,7 +110,7 @@ export const AnalysisCard: React.FC<AnalysisCardProps> = ({
             <div className="flex items-center gap-2 mb-1">
               <span className={`clay-badge text-[11px] ${badgeColorClass}`}>
                 {isDay ? <Wind className="w-3 h-3" /> : <Moon className="w-3 h-3" />}
-                {isDay ? 'Day Atmosphere' : 'Night Sky Glow'}
+                {isDay ? 'Atmosfer Siang' : 'Pijar Langit Malam'}
               </span>
               {location?.locationName && (
                 <span className="text-xs text-slate-300 font-medium truncate max-w-[170px]">
@@ -101,14 +119,14 @@ export const AnalysisCard: React.FC<AnalysisCardProps> = ({
               )}
             </div>
             <h2 className="text-xl font-black text-white tracking-tight">
-              {primaryMetric.label}
+              {primaryMetric.label === 'Estimated AQI' ? 'Perkiraan AQI' : 'Kelas Skala Bortle'}
             </h2>
           </div>
 
           <button
             onClick={handleShare}
             className="p-2.5 rounded-2xl bg-[#0E1422] border border-white/10 text-slate-300 hover:text-white active:scale-95 shadow-[inset_2px_2px_4px_rgba(0,0,0,0.5)] transition-transform"
-            title="Share or Copy Scan Summary"
+            title="Bagikan atau Salin Ringkasan Pemindaian"
           >
             {copied ? <Check className="w-4 h-4 text-[#DCFD8B]" /> : <Share2 className="w-4 h-4" />}
           </button>
@@ -122,18 +140,18 @@ export const AnalysisCard: React.FC<AnalysisCardProps> = ({
                 {primaryMetric.value}
               </span>
               <span className="text-sm font-bold text-slate-400">
-                {primaryMetric.unit || (isDay ? 'AQI' : 'Class')}
+                {primaryMetric.unit ? (primaryMetric.unit === 'Class 1-9' ? 'Kelas 1-9' : primaryMetric.unit) : (isDay ? 'AQI' : 'Kelas')}
               </span>
             </div>
             <p className="text-sm font-bold mt-1 text-slate-200">
-              {primaryMetric.category}
+              {translateCategory(primaryMetric.category)}
             </p>
           </div>
 
           {/* Graphical level meter */}
           <div className="text-right flex flex-col items-end">
             <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1">
-              Eco Severity
+              Tingkat Keparahan Eco
             </span>
             <div className="w-24 h-3 bg-[#0E1422] rounded-full p-0.5 border border-white/10 shadow-inner">
               <div 
@@ -147,8 +165,8 @@ export const AnalysisCard: React.FC<AnalysisCardProps> = ({
             </div>
             <span className="text-[11px] font-extrabold mt-1" style={{ color: primaryMetric.colorHex }}>
               {isDay 
-                ? (primaryMetric.value <= 50 ? 'Pristine' : primaryMetric.value <= 100 ? 'Acceptable' : 'Smog Elevated')
-                : (primaryMetric.value <= 3 ? 'Dark Sky' : primaryMetric.value <= 6 ? 'Light Domed' : 'Severe Glare')}
+                ? (primaryMetric.value <= 50 ? 'Sangat Bersih' : primaryMetric.value <= 100 ? 'Sedang' : 'Polusi Meningkat')
+                : (primaryMetric.value <= 3 ? 'Langit Gelap' : primaryMetric.value <= 6 ? 'Kubah Cahaya' : 'Silau Parah')}
             </span>
           </div>
         </div>
@@ -166,7 +184,7 @@ export const AnalysisCard: React.FC<AnalysisCardProps> = ({
         {/* Metric 1: Visibility */}
         <div className="clay-card p-3.5 flex flex-col justify-between">
           <div className="flex items-center justify-between text-slate-400 mb-1">
-            <span className="text-xs font-semibold">Visibility</span>
+            <span className="text-xs font-semibold">Jarak Pandang</span>
             <Eye className="w-4 h-4 text-[#DCFD8B]" />
           </div>
           <div>
@@ -174,7 +192,7 @@ export const AnalysisCard: React.FC<AnalysisCardProps> = ({
               {secondaryMetrics.visibilityKm} <span className="text-xs font-medium text-slate-400">km</span>
             </div>
             <span className="text-[11px] text-slate-400">
-              {secondaryMetrics.visibilityKm > 10 ? 'Broad Horizon' : 'Haze Scattering'}
+              {secondaryMetrics.visibilityKm > 10 ? 'Cakrawala Luas' : 'Hamburan Kabut'}
             </span>
           </div>
         </div>
@@ -182,7 +200,7 @@ export const AnalysisCard: React.FC<AnalysisCardProps> = ({
         {/* Metric 2: Estimated Lux / Ambient Light */}
         <div className="clay-card p-3.5 flex flex-col justify-between">
           <div className="flex items-center justify-between text-slate-400 mb-1">
-            <span className="text-xs font-semibold">{isDay ? 'Solar Lux' : 'Stray Lux'}</span>
+            <span className="text-xs font-semibold">{isDay ? 'Lux Matahari' : 'Cahaya Liar'}</span>
             <Sun className="w-4 h-4 text-[#BC84EE]" />
           </div>
           <div>
@@ -190,7 +208,7 @@ export const AnalysisCard: React.FC<AnalysisCardProps> = ({
               {secondaryMetrics.estimatedLux} <span className="text-xs font-medium text-slate-400">lx</span>
             </div>
             <span className="text-[11px] text-slate-400">
-              {isDay ? 'Ambient Daylight' : (secondaryMetrics.estimatedLux > 20 ? 'Excessive Spill' : 'Natural Darkness')}
+              {isDay ? 'Cahaya Siang Hari' : (secondaryMetrics.estimatedLux > 20 ? 'Limpahan Cahaya Berlebih' : 'Kegelapan Alami')}
             </span>
           </div>
         </div>
@@ -201,7 +219,7 @@ export const AnalysisCard: React.FC<AnalysisCardProps> = ({
         <div className="clay-card p-4">
           <div className="flex items-center gap-2 mb-2 text-xs font-bold uppercase tracking-wider text-slate-400">
             <AlertTriangle className="w-4 h-4 text-[#FF823A]" />
-            <span>Detected Optical Anomalies</span>
+            <span>Anomali Optik Terdeteksi</span>
           </div>
           <div className="flex flex-wrap gap-2">
             {secondaryMetrics.detectedAnomalies.map((item, idx) => (
@@ -222,7 +240,7 @@ export const AnalysisCard: React.FC<AnalysisCardProps> = ({
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Leaf className="w-4 h-4 text-[#DCFD8B]" />
-            <span className="font-bold text-sm text-white">Fauna & Health Advisory</span>
+            <span className="font-bold text-sm text-white">Saran Satwa & Kesehatan</span>
           </div>
           <span className={`clay-badge text-[10px] ${
             environmentalImpact.faunaRiskLevel === 'Critical' || environmentalImpact.faunaRiskLevel === 'High'
@@ -231,7 +249,7 @@ export const AnalysisCard: React.FC<AnalysisCardProps> = ({
               ? 'text-[#BC84EE] bg-[#251C33] border-[#BC84EE]/40'
               : 'text-[#DCFD8B] bg-[#1C2B20] border-[#DCFD8B]/40'
           }`}>
-            Risk: {environmentalImpact.faunaRiskLevel}
+            Risiko: {environmentalImpact.faunaRiskLevel === 'Low' ? 'Rendah' : environmentalImpact.faunaRiskLevel === 'Moderate' ? 'Sedang' : environmentalImpact.faunaRiskLevel === 'High' ? 'Tinggi' : 'Kritis'}
           </span>
         </div>
 
@@ -239,7 +257,7 @@ export const AnalysisCard: React.FC<AnalysisCardProps> = ({
         <div className="bg-[#0E1422] p-3 rounded-2xl border border-white/5 text-xs space-y-1">
           <span className="font-bold text-[#DCFD8B] flex items-center gap-1.5">
             <ShieldCheck className="w-3.5 h-3.5" />
-            Health Recommendation
+            Rekomendasi Kesehatan
           </span>
           <p className="text-slate-300 leading-relaxed">
             {environmentalImpact.healthRecommendation}
@@ -250,7 +268,7 @@ export const AnalysisCard: React.FC<AnalysisCardProps> = ({
         <div className="bg-[#0E1422] p-3 rounded-2xl border border-white/5 text-xs space-y-1">
           <span className="font-bold text-[#BC84EE] flex items-center gap-1.5">
             <Sparkles className="w-3.5 h-3.5" />
-            Actionable Eco-Tip
+            Tips Ramah Lingkungan
           </span>
           <p className="text-slate-300 leading-relaxed">
             {environmentalImpact.actionableEcoTip}
@@ -266,7 +284,7 @@ export const AnalysisCard: React.FC<AnalysisCardProps> = ({
             className="clay-button clay-button-slate py-3 px-4 text-xs flex items-center justify-center gap-2"
           >
             <Compass className="w-4 h-4 text-[#DCFD8B]" />
-            <span>Pin to Heatmap</span>
+            <span>Sematkan ke Peta</span>
           </button>
         )}
 
@@ -276,7 +294,7 @@ export const AnalysisCard: React.FC<AnalysisCardProps> = ({
             className="clay-button clay-button-lime py-3 px-4 text-xs font-bold flex items-center justify-center gap-2"
           >
             <Sparkles className="w-4 h-4" />
-            <span>Simulate Fixes</span>
+            <span>Simulasikan Solusi</span>
           </button>
         )}
       </div>

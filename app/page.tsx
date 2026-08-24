@@ -52,13 +52,13 @@ export default function Home() {
   const handleLoadDemoDataset = () => {
     const updated = resetDemoDataset();
     setScans(updated);
-    showToast('⚡ Pre-filled 5 National & Global Demo Coordinates');
+    showToast('⚡ 5 Koordinat Demo Nasional & Global Berhasil Dimuat');
   };
 
   const handleScanCompleted = (record: ScanRecord) => {
     setActiveScan(record);
     setScans(getStoredScans());
-    showToast('✨ Atmospheric Scan Successfully Synthesized');
+    showToast('✨ Pemindaian Atmosfer Berhasil Disintesis');
   };
 
   const handleSelectScanFromList = (record: ScanRecord) => {
@@ -106,7 +106,7 @@ export default function Home() {
                   className="clay-button clay-button-slate py-1.5 px-3 text-xs flex items-center gap-1.5 active:scale-95"
                 >
                   <ArrowLeft className="w-3.5 h-3.5 text-[#DCFD8B]" />
-                  <span>Back to Scanner</span>
+                  <span>Kembali ke Pemindai</span>
                 </button>
                 <span className="text-[10px] text-slate-400 font-mono">
                   ID: {activeScan.id.slice(0, 12)}

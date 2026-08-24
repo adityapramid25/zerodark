@@ -2,9 +2,9 @@ import type { Metadata, Viewport } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'ZeroDark Mobile: Dual-Atmosphere Eco-Scanner',
+  title: 'ZeroDark Mobile: Pemindai Eco Dua Atmosfer',
   description:
-    'Playful, tactile 3D Claymorphism mobile web app for dual-atmospheric eco-scanning (Daytime AQI Smog & Nighttime Light Pollution / Bortle Scale) with interactive Leaflet heatmap and dark corridor policy simulation.',
+    'Aplikasi web mobile Claymorphism interaktif untuk pemindaian ekologis dua atmosfer (Smog Kualitas Udara Siang Hari & Polusi Cahaya Malam Hari / Skala Bortle) dengan peta panas Leaflet interaktif dan simulasi kebijakan koridor gelap.',
   keywords: ['ZeroDark', 'Claymorphism', 'AQI', 'Bortle Scale', 'Light Pollution', 'Eco-Scanner', 'Next.js 14'],
   authors: [{ name: 'ZeroDark Engineering' }],
 };
@@ -23,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="id" className="dark">
       <body className="bg-[#070A11] min-h-screen text-slate-100 antialiased selection:bg-[#DCFD8B] selection:text-[#0B0F19]">
         {children}
       </body>

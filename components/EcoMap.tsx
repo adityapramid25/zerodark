@@ -46,9 +46,9 @@ export const EcoMap: React.FC<EcoMapProps> = ({ scans, onSelectScan, onOpenScann
             <MapPin className="w-4 h-4 text-[#DCFD8B]" />
           </div>
           <div>
-            <h2 className="text-xs font-black text-white">Atmosphere Heatmap</h2>
+            <h2 className="text-xs font-black text-white">Peta Panas Atmosfer</h2>
             <p className="text-[10px] text-slate-400 font-medium">
-              {filteredScans.length} Spatial Geo-Points
+              {filteredScans.length} Titik Geo Spasial
             </p>
           </div>
         </div>
@@ -63,7 +63,7 @@ export const EcoMap: React.FC<EcoMapProps> = ({ scans, onSelectScan, onOpenScann
                 : 'text-slate-400 hover:text-slate-200'
             }`}
           >
-            All
+            Semua
           </button>
           <button
             onClick={() => setFilterMode('day')}
@@ -74,7 +74,7 @@ export const EcoMap: React.FC<EcoMapProps> = ({ scans, onSelectScan, onOpenScann
             }`}
           >
             <Sun className="w-3 h-3" />
-            Air
+            Udara
           </button>
           <button
             onClick={() => setFilterMode('night')}
@@ -85,7 +85,7 @@ export const EcoMap: React.FC<EcoMapProps> = ({ scans, onSelectScan, onOpenScann
             }`}
           >
             <Moon className="w-3 h-3" />
-            Dark Sky
+            Langit Gelap
           </button>
         </div>
       </div>
@@ -102,26 +102,26 @@ export const EcoMap: React.FC<EcoMapProps> = ({ scans, onSelectScan, onOpenScann
             <div className="w-10 h-10 rounded-2xl bg-[#151D2A] flex items-center justify-center animate-spin">
               <Layers className="w-5 h-5 text-[#DCFD8B]" />
             </div>
-            <p className="text-xs text-slate-400 font-mono">Initializing Spatial Grid...</p>
+            <p className="text-xs text-slate-400 font-mono">Menginisialisasi Kisi Spasial...</p>
           </div>
         )}
 
         {/* Legend Overlay */}
         <div className="absolute top-3 left-3 z-[400] bg-[#111827]/90 backdrop-blur-md px-3 py-2 rounded-2xl border border-white/10 text-[10px] space-y-1.5 shadow-lg">
           <span className="font-extrabold text-white block uppercase tracking-wider text-[9px]">
-            Atmospheric Legend
+            Legenda Atmosfer
           </span>
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-[#DCFD8B] shadow-[0_0_6px_#DCFD8B]" />
-            <span className="text-slate-300 font-medium">Clean Air / Bortle 1-3</span>
+            <span className="text-slate-300 font-medium">Udara Bersih / Bortle 1-3</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-[#BC84EE] shadow-[0_0_6px_#BC84EE]" />
-            <span className="text-slate-300 font-medium">Moderate / Skyglow 4-6</span>
+            <span className="text-slate-300 font-medium">Sedang / Skyglow 4-6</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-[#FF823A] shadow-[0_0_6px_#FF823A]" />
-            <span className="text-slate-300 font-medium">Unhealthy / Glare 7-9</span>
+            <span className="text-slate-300 font-medium">Tidak Sehat / Silau 7-9</span>
           </div>
         </div>
 
@@ -175,7 +175,7 @@ export const EcoMap: React.FC<EcoMapProps> = ({ scans, onSelectScan, onOpenScann
                   className="w-full clay-button clay-button-lime py-2 text-xs font-bold flex items-center justify-center gap-1.5"
                 >
                   <Sparkles className="w-3.5 h-3.5" />
-                  <span>Inspect Full Diagnostics</span>
+                  <span>Periksa Diagnostik Lengkap</span>
                 </button>
               )}
             </div>

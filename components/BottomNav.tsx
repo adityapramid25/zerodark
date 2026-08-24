@@ -17,10 +17,10 @@ export const BottomNav: React.FC<BottomNavProps> = ({
   scanCount = 0,
 }) => {
   const navItems: { id: NavTab; label: string; icon: React.FC<{ className?: string }> }[] = [
-    { id: 'scan', label: 'Scan', icon: Camera },
-    { id: 'heatmap', label: 'Heatmap', icon: MapPin },
-    { id: 'policy', label: 'Policy', icon: Sliders },
-    { id: 'history', label: 'Logs', icon: History },
+    { id: 'scan', label: 'Pindai', icon: Camera },
+    { id: 'heatmap', label: 'Peta', icon: MapPin },
+    { id: 'policy', label: 'Kebijakan', icon: Sliders },
+    { id: 'history', label: 'Riwayat', icon: History },
   ];
 
   return (

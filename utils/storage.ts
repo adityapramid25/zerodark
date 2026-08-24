@@ -9,12 +9,12 @@ export const DEMO_DATASET: ScanRecord[] = [
     coordinates: {
       lat: -7.9425,
       lng: 112.9530,
-      locationName: 'Mount Bromo Dark Sky Reserve',
-      region: 'East Java'
+      locationName: 'Cagar Langit Gelap Gunung Bromo',
+      region: 'Jawa Timur'
     },
     photoUrl: 'https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=600&auto=format&fit=crop&q=80',
     isDemo: true,
-    notes: 'Pristine starry night over volcanic caldera. Zodiacal light clearly visible.',
+    notes: 'Malam berbintang yang sangat bersih di atas kaldera gunung berapi. Cahaya zodiak terlihat jelas.',
     analysis: {
       mode: 'night_light_pollution',
       primaryMetric: {
@@ -27,20 +27,20 @@ export const DEMO_DATASET: ScanRecord[] = [
       secondaryMetrics: {
         visibilityKm: 28.5,
         estimatedLux: 0.05,
-        hazeDensity: 'Pristine Atmosphere',
-        detectedAnomalies: ['Airglow Bands', 'Milky Way Core Starlight'],
+        hazeDensity: 'Atmosfer Sangat Bersih',
+        detectedAnomalies: ['Pita Airglow', 'Cahaya Bintang Inti Bima Sakti'],
         skyGlowIndex: 4,
         colorTemperatureK: 2400
       },
       environmentalImpact: {
         faunaRiskLevel: 'Low',
-        healthRecommendation: 'Protected melatonin synthesis and natural dark cycles.',
-        actionableEcoTip: 'Maintain IDA Dark Sky Reserve buffer against perimeter resort development.',
-        floraFaunaImpact: 'Nocturnal raptor hunting and insect orientation fully protected.'
+        healthRecommendation: 'Sintesis melatonin terlindungi dan siklus gelap alami terjaga.',
+        actionableEcoTip: 'Pertahankan radius penyangga Cagar Langit Gelap IDA dari pembangunan resor di sekitarnya.',
+        floraFaunaImpact: 'Perburuan raptor nokturnal dan orientasi serangga sepenuhnya terlindungi.'
       },
-      summaryDescription: 'Caldera elevation ensures minimal upward artificial scatter. Bortle 2 conditions confirmed.',
+      summaryDescription: 'Ketinggian kaldera memastikan hamburan buatan ke atas sangat minimal. Kondisi Bortle 2 terkonfirmasi.',
       confidenceScore: 0.98,
-      detectedFeatures: ['Zero Artificial Skyglow', 'Galactic Structure Resolved', 'Optimal Darkness']
+      detectedFeatures: ['Tanpa Pijar Langit Buatan', 'Struktur Galaksi Terlihat', 'Kegelapan Optimal']
     }
   },
   {
@@ -49,12 +49,12 @@ export const DEMO_DATASET: ScanRecord[] = [
     coordinates: {
       lat: -6.2088,
       lng: 106.8456,
-      locationName: 'Jakarta Golden Triangle Corridor',
+      locationName: 'Koridor Segitiga Emas Jakarta',
       region: 'DKI Jakarta'
     },
     photoUrl: 'https://images.unsplash.com/photo-1577705998148-6da4f3963bc8?w=600&auto=format&fit=crop&q=80',
     isDemo: true,
-    notes: 'Midday traffic canyon with dense thermal inversion layer.',
+    notes: 'Kawasan lalu lintas padat tengah hari dengan lapisan inversi termal yang padat.',
     analysis: {
       mode: 'day_air_pollution',
       primaryMetric: {
@@ -67,20 +67,20 @@ export const DEMO_DATASET: ScanRecord[] = [
       secondaryMetrics: {
         visibilityKm: 2.8,
         estimatedLux: 36000,
-        hazeDensity: 'Dense Photochemical Smog',
-        detectedAnomalies: ['Urban Canyon Heat Island', 'Particulate Smog Inversion', 'Diesel Exhaust Plume'],
+        hazeDensity: 'Kabut Asap Fotokimia Padat',
+        detectedAnomalies: ['Pulau Panas Perkotaan', 'Inversi Asap Partikulat', 'Asap Knalpot Diesel'],
         skyGlowIndex: 88,
         colorTemperatureK: 5200
       },
       environmentalImpact: {
         faunaRiskLevel: 'Critical',
-        healthRecommendation: 'Wear N95 mask outdoors. High PM2.5 concentration requires room air filtration.',
-        actionableEcoTip: 'Promote zero-emission bus corridors and vertical greenery along arterial bridges.',
-        floraFaunaImpact: 'Heavy soot deposition on roadside foliage inhibits carbon sequestration.'
+        healthRecommendation: 'Kenakan masker N95 di luar ruangan. Konsentrasi PM2.5 yang tinggi memerlukan filtrasi udara ruangan.',
+        actionableEcoTip: 'Dorong koridor bus bebas emisi dan penghijauan vertikal di sepanjang jembatan arteri.',
+        floraFaunaImpact: 'Pengendapan jelaga yang berat pada dedaunan di pinggir jalan menghambat penyerapan karbon.'
       },
-      summaryDescription: 'Severe horizon degradation due to trapped fine aerosols. High scattering coefficient.',
+      summaryDescription: 'Degradasi cakrawala yang parah akibat aerosol halus yang terperangkap. Koefisien hamburan yang tinggi.',
       confidenceScore: 0.94,
-      detectedFeatures: ['Microparticle Inversion', 'Sky Opacity 65%', 'Vehicle Canyon Trapping']
+      detectedFeatures: ['Inversi Mikropartikel', 'Opasitas Langit 65%', 'Pemerangkapan Polusi Jalanan']
     }
   },
   {
@@ -89,12 +89,12 @@ export const DEMO_DATASET: ScanRecord[] = [
     coordinates: {
       lat: -6.9666,
       lng: 110.4166,
-      locationName: 'Tanjung Emas Industrial Harbor',
+      locationName: 'Pelabuhan Industri Tanjung Emas',
       region: 'Semarang'
     },
     photoUrl: 'https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=600&auto=format&fit=crop&q=80',
     isDemo: true,
-    notes: 'High-mast unshielded dock floodlights radiating across coastline.',
+    notes: 'Lampu sorot dermaga tiang tinggi tanpa pelindung memancar di sepanjang garis pantai.',
     analysis: {
       mode: 'night_light_pollution',
       primaryMetric: {
@@ -107,20 +107,20 @@ export const DEMO_DATASET: ScanRecord[] = [
       secondaryMetrics: {
         visibilityKm: 4.1,
         estimatedLux: 92.4,
-        hazeDensity: 'Light Marine Fog + Skyglow Bleed',
-        detectedAnomalies: ['Unshielded High-Mast Floodlight Glare', 'Skyward Marine Spill >40%', '5000K Blue Glare'],
+        hazeDensity: 'Kabut Laut Tipis + Kebocoran Pijar Langit',
+        detectedAnomalies: ['Silau Lampu Sorot Tiang Tinggi Tanpa Pelindung', 'Limpahan Cahaya Kelautan ke Arah Langit >40%', 'Silau Biru CCT 5000K'],
         skyGlowIndex: 94,
         colorTemperatureK: 5400
       },
       environmentalImpact: {
         faunaRiskLevel: 'High',
-        healthRecommendation: 'Harbor staff should wear glare-shielded protective lenses during night shifts.',
-        actionableEcoTip: 'Install full cut-off asymmetric hoods on container terminal cranes.',
-        floraFaunaImpact: 'Sea turtle hatchling disorientation and coastal migratory bird trapping observed.'
+        healthRecommendation: 'Staf pelabuhan harus mengenakan lensa pelindung anti-silau selama shift malam.',
+        actionableEcoTip: 'Pasang tudung asimetris pelindung penuh pada derek terminal peti kemas.',
+        floraFaunaImpact: 'Disorientasi anak penyu dan pemerangkapan burung migran pesisir teramati.'
       },
-      summaryDescription: 'Massive upward photometric flare detected from industrial floodlights without shielding.',
+      summaryDescription: 'Suar fotometrik ke atas yang masif terdeteksi dari lampu sorot industri tanpa pelindung.',
       confidenceScore: 0.96,
-      detectedFeatures: ['High Glare Directivity', 'Marine Light Spill', 'Severe Sky Domed Halo']
+      detectedFeatures: ['Direktivitas Silau Tinggi', 'Limpahan Cahaya Laut', 'Halo Kubah Langit yang Parah']
     }
   },
   {
@@ -129,12 +129,12 @@ export const DEMO_DATASET: ScanRecord[] = [
     coordinates: {
       lat: -6.8168,
       lng: 107.6186,
-      locationName: 'Lembang Botanical Highlands',
-      region: 'Bandung Regency'
+      locationName: 'Dataran Tinggi Botani Lembang',
+      region: 'Kabupaten Bandung'
     },
     photoUrl: 'https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?w=600&auto=format&fit=crop&q=80',
     isDemo: true,
-    notes: 'Mountain valley breeze dispersing morning aerosol particles.',
+    notes: 'Angin lembah gunung membubarkan partikel aerosol pagi hari.',
     analysis: {
       mode: 'day_air_pollution',
       primaryMetric: {
@@ -147,20 +147,20 @@ export const DEMO_DATASET: ScanRecord[] = [
       secondaryMetrics: {
         visibilityKm: 18.2,
         estimatedLux: 72000,
-        hazeDensity: 'Negligible (Crisp Alpine View)',
-        detectedAnomalies: ['Clean Pine Canopy Aeration'],
+        hazeDensity: 'Sangat Sedikit (Pemandangan Pegunungan Bersih)',
+        detectedAnomalies: ['Aerasi Kanopi Pinus Bersih'],
         skyGlowIndex: 8,
         colorTemperatureK: 6000
       },
       environmentalImpact: {
         faunaRiskLevel: 'Low',
-        healthRecommendation: 'Excellent air quality. Great for respiratory wellness and outdoor recreation.',
-        actionableEcoTip: 'Preserve high-altitude green corridors and natural bio-filtering pine forests.',
-        floraFaunaImpact: 'Optimal stomatal conductance and thriving endemic bird biodiversity.'
+        healthRecommendation: 'Kualitas udara sangat baik. Bagus untuk kesehatan pernapasan dan rekreasi luar ruangan.',
+        actionableEcoTip: 'Pertahankan koridor hijau dataran tinggi dan hutan pinus penyaring biologis alami.',
+        floraFaunaImpact: 'Konduktansi stomata optimal dan keanekaragaman hayati burung endemik berkembang pesat.'
       },
-      summaryDescription: 'Crisp mountain horizon with high Rayleigh clarity and minimal human particulate footprint.',
+      summaryDescription: 'Cakrawala gunung yang bersih dengan kejelasan Rayleigh tinggi dan jejak partikulat manusia minimal.',
       confidenceScore: 0.95,
-      detectedFeatures: ['Pure Mountain Air', 'Low Aerosol Scattering', 'High Sun Penetration']
+      detectedFeatures: ['Udara Gunung Murni', 'Hamburan Aerosol Rendah', 'Penetrasi Matahari Tinggi']
     }
   },
   {
@@ -169,12 +169,12 @@ export const DEMO_DATASET: ScanRecord[] = [
     coordinates: {
       lat: -8.8291,
       lng: 115.0849,
-      locationName: 'Uluwatu Ocean Cliff Corridor',
+      locationName: 'Koridor Tebing Samudra Uluwatu',
       region: 'Bali'
     },
     photoUrl: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80',
     isDemo: true,
-    notes: 'Cliffside resort ambient glow meeting southern dark ocean horizon.',
+    notes: 'Pijar lingkungan resor tepi tebing bertemu dengan cakrawala samudra selatan yang gelap.',
     analysis: {
       mode: 'night_light_pollution',
       primaryMetric: {
@@ -187,20 +187,20 @@ export const DEMO_DATASET: ScanRecord[] = [
       secondaryMetrics: {
         visibilityKm: 16.4,
         estimatedLux: 4.8,
-        hazeDensity: 'Mild Ocean Salt Mist',
-        detectedAnomalies: ['Resort Facade Up-Lighting', 'Cliff Pathway String Lights'],
+        hazeDensity: 'Kabut Garam Laut Ringan',
+        detectedAnomalies: ['Pencahayaan Fasad Resor ke Atas', 'Lampu Hias Jalur Tebing'],
         skyGlowIndex: 38,
         colorTemperatureK: 3000
       },
       environmentalImpact: {
         faunaRiskLevel: 'Moderate',
-        healthRecommendation: 'Mild ambient glare along pathways. Suitable for evening relaxation.',
-        actionableEcoTip: 'Enforce warm 2200K amber lighting guidelines along cliffside nesting grounds.',
-        floraFaunaImpact: 'Preserving seaward darkness protects oceanic petrels and cliff-dwelling raptors.'
+        healthRecommendation: 'Silau lingkungan ringan di sepanjang jalur. Cocok untuk relaksasi malam hari.',
+        actionableEcoTip: 'Terapkan pedoman pencahayaan amber hangat 2200K di sepanjang tempat bersarang di tepi tebing.',
+        floraFaunaImpact: 'Menjaga kegelapan ke arah laut melindungi petrel samudra dan raptor yang tinggal di tebing.'
       },
-      summaryDescription: 'Southern oceanic view remains dark with visible constellations, though landward resort glow is present.',
+      summaryDescription: 'Pemandangan samudra selatan tetap gelap dengan rasi bintang terlihat, meskipun pijar resor di daratan ada.',
       confidenceScore: 0.91,
-      detectedFeatures: ['Coastal Light Transition', 'Partially Shielded Path Lights', 'Good Ocean Horizon']
+      detectedFeatures: ['Transisi Cahaya Pesisir', 'Lampu Jalur Terlindungi Sebagian', 'Cakrawala Samudra yang Baik']
     }
   }
 ];

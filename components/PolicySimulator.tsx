@@ -62,19 +62,19 @@ export const PolicySimulator: React.FC = () => {
               <Sliders className="w-4 h-4 text-[#BC84EE]" />
             </div>
             <div>
-              <h2 className="text-sm font-black text-white">Dark Corridor Policy Simulator</h2>
-              <p className="text-[10px] text-slate-400 font-medium">Urban & Ecological Light Mitigation</p>
+              <h2 className="text-sm font-black text-white">Simulator Kebijakan Koridor Gelap</h2>
+              <p className="text-[10px] text-slate-400 font-medium">Mitigasi Cahaya Perkotaan & Ekologis</p>
             </div>
           </div>
           <span className="clay-badge text-[10px] bg-[#1C2B20] text-[#DCFD8B] border border-[#DCFD8B]/40">
-            Live Model
+            Model Langsung
           </span>
         </div>
 
         {/* Quick Presets */}
         <div className="flex items-center gap-1.5 pt-2 border-t border-white/5">
           <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mr-1">
-            Presets:
+            Preset:
           </span>
           <button
             onClick={() => applyPreset('reserve')}
@@ -101,10 +101,10 @@ export const PolicySimulator: React.FC = () => {
       <div className="clay-card-lime p-5 relative overflow-hidden">
         <div className="flex items-center justify-between mb-3">
           <span className="text-xs font-black uppercase tracking-wider text-[#0B0F19] bg-[#DCFD8B] px-2.5 py-0.5 rounded-full">
-            Projected Eco-Dividend
+            Proyeksi Keuntungan Ekologis
           </span>
           <span className="text-[11px] font-extrabold text-[#DCFD8B]">
-            +{impact.skyClarityBoostPct}% Sky Clarity
+            +{impact.skyClarityBoostPct}% Kejelasan Langit
           </span>
         </div>
 
@@ -112,7 +112,7 @@ export const PolicySimulator: React.FC = () => {
           {/* Gauge 1: Light Pollution Drop */}
           <div className="bg-[#0B0F19]/60 backdrop-blur-sm p-3 rounded-2xl border border-white/10">
             <div className="flex items-center justify-between text-slate-400 mb-1">
-              <span className="text-[11px] font-bold">Light Spill Reduction</span>
+              <span className="text-[11px] font-bold">Pengurangan Limpahan Cahaya</span>
               <TrendingDown className="w-3.5 h-3.5 text-[#DCFD8B]" />
             </div>
             <div className="text-2xl font-black text-[#DCFD8B]">
@@ -129,13 +129,13 @@ export const PolicySimulator: React.FC = () => {
           {/* Gauge 2: Restored Fauna Corridor Area */}
           <div className="bg-[#0B0F19]/60 backdrop-blur-sm p-3 rounded-2xl border border-white/10">
             <div className="flex items-center justify-between text-slate-400 mb-1">
-              <span className="text-[11px] font-bold">Restored Corridor</span>
+              <span className="text-[11px] font-bold">Koridor yang Dipulihkan</span>
               <Bird className="w-3.5 h-3.5 text-[#BC84EE]" />
             </div>
             <div className="text-2xl font-black text-white">
               {impact.restoredFaunaCorridorHa.toLocaleString()} <span className="text-xs font-bold text-slate-400">Ha</span>
             </div>
-            <p className="text-[10px] text-slate-400 mt-1">Wildlife Sanctuary</p>
+            <p className="text-[10px] text-slate-400 mt-1">Suaka Margasatwa</p>
           </div>
         </div>
 
@@ -145,7 +145,7 @@ export const PolicySimulator: React.FC = () => {
             <Zap className="w-4 h-4 text-[#DCFD8B] shrink-0" />
             <div>
               <span className="text-xs font-black text-white">{impact.energySavedMwh.toLocaleString()} MWh</span>
-              <p className="text-[9px] text-slate-400">Grid Energy Saved / Year</p>
+              <p className="text-[9px] text-slate-400">Energi Jaringan Dihemat / Tahun</p>
             </div>
           </div>
 
@@ -153,7 +153,7 @@ export const PolicySimulator: React.FC = () => {
             <DollarSign className="w-4 h-4 text-[#DCFD8B] shrink-0" />
             <div>
               <span className="text-xs font-black text-white">${impact.costSavingsUsd.toLocaleString()}</span>
-              <p className="text-[9px] text-slate-400">Annual Municipal Savings</p>
+              <p className="text-[9px] text-slate-400">Penghematan Pemkot Tahunan</p>
             </div>
           </div>
         </div>
@@ -162,7 +162,7 @@ export const PolicySimulator: React.FC = () => {
       {/* Interactive Policy Sliders with Clay Knobs */}
       <div className="clay-card p-5 space-y-5 bg-[#151D2A]">
         <h3 className="text-xs font-bold uppercase tracking-wider text-slate-300">
-          Municipal Policy Adjusters
+          Penyesuai Kebijakan Kota
         </h3>
 
         {/* Slider 1: Commercial Lighting Curfew */}
@@ -170,10 +170,10 @@ export const PolicySimulator: React.FC = () => {
           <div className="flex items-center justify-between text-xs">
             <label className="font-bold text-slate-200 flex items-center gap-1.5">
               <Clock className="w-3.5 h-3.5 text-[#BC84EE]" />
-              Commercial Lighting Curfew
+              Jam Malam Pencahayaan Komersial
             </label>
             <span className="font-mono font-extrabold text-[#BC84EE] bg-[#251C33] px-2 py-0.5 rounded-lg border border-[#BC84EE]/30">
-              {params.curfewHour}:00 PM
+              {params.curfewHour === 12 ? '12:00 siang' : params.curfewHour > 12 ? `${params.curfewHour - 12}:00 malam` : `${params.curfewHour}:00 pagi`}
             </span>
           </div>
           <input
@@ -186,9 +186,9 @@ export const PolicySimulator: React.FC = () => {
             className="clay-slider"
           />
           <div className="flex justify-between text-[9px] text-slate-500 font-semibold px-1">
-            <span>6:00 PM (Strict)</span>
-            <span>10:00 PM</span>
-            <span>12:00 AM (Late)</span>
+            <span>6:00 Sore (Ketat)</span>
+            <span>10:00 Malam</span>
+            <span>12:00 Malam (Larut)</span>
           </div>
         </div>
 
@@ -197,7 +197,7 @@ export const PolicySimulator: React.FC = () => {
           <div className="flex items-center justify-between text-xs">
             <label className="font-bold text-slate-200 flex items-center gap-1.5">
               <SunMedium className="w-3.5 h-3.5 text-[#DCFD8B]" />
-              Public LED Dimming Factor
+              Faktor Peredupan LED Publik
             </label>
             <span className="font-mono font-extrabold text-[#DCFD8B] bg-[#1C2B20] px-2 py-0.5 rounded-lg border border-[#DCFD8B]/30">
               {params.dimmingFactor}%
@@ -213,9 +213,9 @@ export const PolicySimulator: React.FC = () => {
             className="clay-slider"
           />
           <div className="flex justify-between text-[9px] text-slate-500 font-semibold px-1">
-            <span>0% (Full Blast)</span>
-            <span>50% Adaptive</span>
-            <span>100% Full Cut</span>
+            <span>0% (Kecerahan Penuh)</span>
+            <span>50% Adaptif</span>
+            <span>100% Redup Penuh</span>
           </div>
         </div>
 
@@ -224,7 +224,7 @@ export const PolicySimulator: React.FC = () => {
           <div className="flex items-center justify-between text-xs">
             <label className="font-bold text-slate-200 flex items-center gap-1.5">
               <Shield className="w-3.5 h-3.5 text-[#FF823A]" />
-              Luminaire Shielding Mandate
+              Mandat Perlindungan Lampu
             </label>
             <span className="font-mono font-extrabold text-[#FF823A] bg-[#2B1D18] px-2 py-0.5 rounded-lg border border-[#FF823A]/30">
               {params.shieldingCompliance}%
@@ -240,9 +240,9 @@ export const PolicySimulator: React.FC = () => {
             className="clay-slider"
           />
           <div className="flex justify-between text-[9px] text-slate-500 font-semibold px-1">
-            <span>0% Unshielded</span>
-            <span>50% Standard</span>
-            <span>100% Zero-Spill</span>
+            <span>0% Tanpa Pelindung</span>
+            <span>50% Standar</span>
+            <span>100% Tanpa Limpahan</span>
           </div>
         </div>
 
@@ -251,7 +251,7 @@ export const PolicySimulator: React.FC = () => {
           <div className="flex items-center justify-between text-xs">
             <label className="font-bold text-slate-200 flex items-center gap-1.5">
               <Leaf className="w-3.5 h-3.5 text-[#DCFD8B]" />
-              Ecological Buffer Radius
+              Radius Penyangga Ekologis
             </label>
             <span className="font-mono font-extrabold text-[#DCFD8B] bg-[#1C2B20] px-2 py-0.5 rounded-lg border border-[#DCFD8B]/30">
               {params.corridorBufferKm} km
@@ -269,7 +269,7 @@ export const PolicySimulator: React.FC = () => {
           <div className="flex justify-between text-[9px] text-slate-500 font-semibold px-1">
             <span>1 km</span>
             <span>12 km Regional</span>
-            <span>25 km Biosphere</span>
+            <span>25 km Biosfer</span>
           </div>
         </div>
       </div>

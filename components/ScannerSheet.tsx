@@ -28,28 +28,28 @@ interface ScannerSheetProps {
 // Preset samples for fast demo testing
 const DEMO_PRESETS = [
   {
-    title: 'Starry Dark Sky (Bortle 2)',
+    title: 'Langit Gelap Berbintang (Bortle 2)',
     mode: 'night_light_pollution' as const,
     url: 'https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=600&auto=format&fit=crop&q=80',
-    location: { lat: -7.9425, lng: 112.9530, locationName: 'Bromo Dark Sky Reserve', region: 'East Java' }
+    location: { lat: -7.9425, lng: 112.9530, locationName: 'Cagar Langit Gelap Gunung Bromo', region: 'Jawa Timur' }
   },
   {
-    title: 'Urban Particulate Smog (AQI 168)',
+    title: 'Kabut Asap Partikulat Perkotaan (AQI 168)',
     mode: 'day_air_pollution' as const,
     url: 'https://images.unsplash.com/photo-1577705998148-6da4f3963bc8?w=600&auto=format&fit=crop&q=80',
-    location: { lat: -6.2088, lng: 106.8456, locationName: 'Jakarta Skyline', region: 'DKI Jakarta' }
+    location: { lat: -6.2088, lng: 106.8456, locationName: 'Cakrawala Jakarta', region: 'DKI Jakarta' }
   },
   {
-    title: 'Harbor Unshielded Glare (Bortle 8)',
+    title: 'Silau Tanpa Pelindung Pelabuhan (Bortle 8)',
     mode: 'night_light_pollution' as const,
     url: 'https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=600&auto=format&fit=crop&q=80',
-    location: { lat: -6.9666, lng: 110.4166, locationName: 'Semarang Port Terminal', region: 'Central Java' }
+    location: { lat: -6.9666, lng: 110.4166, locationName: 'Terminal Pelabuhan Semarang', region: 'Jawa Tengah' }
   },
   {
-    title: 'Alpine Clean Mountain (AQI 38)',
+    title: 'Pegunungan Bersih Alpen (AQI 38)',
     mode: 'day_air_pollution' as const,
     url: 'https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?w=600&auto=format&fit=crop&q=80',
-    location: { lat: -6.8168, lng: 107.6186, locationName: 'Lembang Alpine Sanctuary', region: 'Bandung' }
+    location: { lat: -6.8168, lng: 107.6186, locationName: 'Suaka Dataran Tinggi Lembang', region: 'Bandung' }
   }
 ];
 
@@ -65,8 +65,8 @@ export const ScannerSheet: React.FC<ScannerSheetProps> = ({
   const [userLocation, setUserLocation] = useState<GeoLocation>({
     lat: -6.2088,
     lng: 106.8456,
-    locationName: 'Detected GPS Location',
-    region: 'Active Device'
+    locationName: 'Lokasi GPS Terdeteksi',
+    region: 'Perangkat Aktif'
   });
   const [isCameraActive, setIsCameraActive] = useState(false);
   const [cameraError, setCameraError] = useState<string | null>(null);
@@ -83,12 +83,12 @@ export const ScannerSheet: React.FC<ScannerSheetProps> = ({
           setUserLocation({
             lat: Number(pos.coords.latitude.toFixed(4)),
             lng: Number(pos.coords.longitude.toFixed(4)),
-            locationName: 'GPS Current Field Coordinates',
-            region: 'User Sensor'
+            locationName: 'Koordinat Lapangan GPS Saat Ini',
+            region: 'Sensor Pengguna'
           });
         },
         (err) => {
-          console.log('Using default geolocation coordinates');
+          console.log('Menggunakan koordinat geolokasi default');
         },
         { timeout: 8000 }
       );
@@ -122,7 +122,7 @@ export const ScannerSheet: React.FC<ScannerSheetProps> = ({
       setIsCameraActive(true);
     } catch (err: any) {
       console.warn('Camera access denied or unavailable:', err);
-      setCameraError('Camera unavailable. Please upload a photo or select a test scene.');
+      setCameraError('Kamera tidak tersedia. Silakan unggah foto atau pilih adegan uji.');
       setIsCameraActive(false);
     }
   };
@@ -177,11 +177,11 @@ export const ScannerSheet: React.FC<ScannerSheetProps> = ({
 
     setIsAnalyzing(true);
     const steps = [
-      'Initializing Photometric Sensors...',
-      'Decomposing Aerosol & Rayleigh Scatter...',
-      'Quantifying Upward Skyward Glare Vectors...',
-      'Evaluating Wildlife Corridor Risk Factors...',
-      'Synthesizing Environmental Action Report...'
+      'Menginisialisasi Sensor Fotometrik...',
+      'Menguraikan Aerosol & Hamburan Rayleigh...',
+      'Mengukur Vektor Silau ke Arah Langit...',
+      'Mengevaluasi Faktor Risiko Koridor Margasatwa...',
+      'Mensintesis Laporan Tindakan Lingkungan...'
     ];
 
     let currentStepIdx = 0;
@@ -218,7 +218,7 @@ export const ScannerSheet: React.FC<ScannerSheetProps> = ({
         coordinates: userLocation,
         photoUrl: selectedImage,
         analysis: analysisResult,
-        notes: `Dual-Atmosphere Scan captured at ${userLocation.locationName}`
+        notes: `Pemindaian Dua Atmosfer ditangkap di ${userLocation.locationName}`
       };
 
       saveScanRecord(record);
@@ -263,7 +263,7 @@ export const ScannerSheet: React.FC<ScannerSheetProps> = ({
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-[#DCFD8B] animate-pulse" />
             <span className="text-xs font-bold uppercase tracking-wider text-slate-300">
-              Optical Lens Scanner
+              Pemindai Lensa Optik
             </span>
           </div>
 
@@ -277,7 +277,7 @@ export const ScannerSheet: React.FC<ScannerSheetProps> = ({
                   : 'text-slate-400 hover:text-slate-200'
               }`}
             >
-              Auto AI
+              AI Otomatis
             </button>
             <button
               onClick={() => setScanMode('day_air_pollution')}
@@ -288,7 +288,7 @@ export const ScannerSheet: React.FC<ScannerSheetProps> = ({
               }`}
             >
               <Sun className="w-3 h-3" />
-              Day
+              Siang
             </button>
             <button
               onClick={() => setScanMode('night_light_pollution')}
@@ -299,7 +299,7 @@ export const ScannerSheet: React.FC<ScannerSheetProps> = ({
               }`}
             >
               <Moon className="w-3 h-3" />
-              Night
+              Malam
             </button>
           </div>
         </div>
@@ -327,9 +327,9 @@ export const ScannerSheet: React.FC<ScannerSheetProps> = ({
                 <Camera className="w-7 h-7 text-[#DCFD8B]" />
               </div>
               <div>
-                <p className="text-sm font-bold text-white">Target Viewfinder Empty</p>
+                <p className="text-sm font-bold text-white">Jendela Bidik Target Kosong</p>
                 <p className="text-xs text-slate-400 mt-0.5">
-                  Point at daytime smog horizon or nighttime sky & lighting fixtures
+                  Arahkan ke cakrawala kabut asap siang hari atau langit malam & lampu penerangan
                 </p>
               </div>
             </div>
@@ -341,7 +341,7 @@ export const ScannerSheet: React.FC<ScannerSheetProps> = ({
               <div className="w-6 h-6 border-t-2 border-l-2 border-[#DCFD8B]/70 rounded-tl-lg" />
               <div className="px-2 py-0.5 rounded-full bg-black/60 backdrop-blur-sm border border-white/10 text-[9px] font-mono text-[#DCFD8B] flex items-center gap-1">
                 <Crosshair className="w-3 h-3 text-[#DCFD8B]" />
-                <span>GRID RETICLE: ACTIVE</span>
+                <span>RETICLE KISI: AKTIF</span>
               </div>
               <div className="w-6 h-6 border-t-2 border-r-2 border-[#DCFD8B]/70 rounded-tr-lg" />
             </div>
@@ -368,10 +368,10 @@ export const ScannerSheet: React.FC<ScannerSheetProps> = ({
               </div>
               <div className="space-y-1">
                 <h3 className="text-base font-black text-white">
-                  Gemini Dual-Atmosphere AI
+                  AI Dua Atmosfer Gemini
                 </h3>
                 <p className="text-xs font-mono text-[#DCFD8B] animate-pulse">
-                  {analysisStep || 'Analyzing atmospheric scattering...'}
+                  {analysisStep || 'Menganalisis hamburan atmosfer...'}
                 </p>
               </div>
             </div>
@@ -394,7 +394,7 @@ export const ScannerSheet: React.FC<ScannerSheetProps> = ({
               className="clay-button clay-button-lime py-3 text-xs font-black flex items-center justify-center gap-2 col-span-2 shadow-[0_4px_16px_rgba(220,253,139,0.3)]"
             >
               <Crosshair className="w-4 h-4" />
-              <span>Capture Atmosphere Frame</span>
+              <span>Tangkap Bingkai Atmosfer</span>
             </button>
           ) : (
             <>
@@ -403,7 +403,7 @@ export const ScannerSheet: React.FC<ScannerSheetProps> = ({
                 className="clay-button clay-button-slate py-2.5 text-xs font-bold flex items-center justify-center gap-2"
               >
                 <Camera className="w-4 h-4 text-[#DCFD8B]" />
-                <span>Open Camera</span>
+                <span>Buka Kamera</span>
               </button>
 
               <button
@@ -411,7 +411,7 @@ export const ScannerSheet: React.FC<ScannerSheetProps> = ({
                 className="clay-button clay-button-slate py-2.5 text-xs font-bold flex items-center justify-center gap-2"
               >
                 <Upload className="w-4 h-4 text-[#BC84EE]" />
-                <span>Upload Sky Photo</span>
+                <span>Unggah Foto Langit</span>
               </button>
             </>
           )}
@@ -436,12 +436,12 @@ export const ScannerSheet: React.FC<ScannerSheetProps> = ({
           {isAnalyzing ? (
             <>
               <RefreshCw className="w-5 h-5 animate-spin" />
-              <span>Analyzing Atmospheric Sensor Data...</span>
+              <span>Menganalisis Data Sensor Atmosfer...</span>
             </>
           ) : (
             <>
               <Sparkles className="w-5 h-5" />
-              <span>Run Gemini Dual-Atmosphere Scan</span>
+              <span>Jalankan Pemindaian Dua Atmosfer Gemini</span>
             </>
           )}
         </button>
@@ -452,9 +452,9 @@ export const ScannerSheet: React.FC<ScannerSheetProps> = ({
         <div className="flex items-center justify-between">
           <span className="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
             <Zap className="w-3.5 h-3.5 text-[#DCFD8B]" />
-            Quick-Test Preset Scenarios
+            Skenario Preset Uji Cepat
           </span>
-          <span className="text-[10px] text-slate-400 font-medium">1-Tap Pitch Demo</span>
+          <span className="text-[10px] text-slate-400 font-medium">Demo 1-Ketuk</span>
         </div>
 
         <div className="grid grid-cols-2 gap-2.5">
@@ -475,7 +475,7 @@ export const ScannerSheet: React.FC<ScannerSheetProps> = ({
                     ? 'bg-[#251C33]/90 text-[#BC84EE] border border-[#BC84EE]/40'
                     : 'bg-[#1C2B20]/90 text-[#DCFD8B] border border-[#DCFD8B]/40'
                 }`}>
-                  {preset.mode === 'night_light_pollution' ? 'Night Sky' : 'Day Air'}
+                  {preset.mode === 'night_light_pollution' ? 'Langit Malam' : 'Udara Siang'}
                 </span>
               </div>
               <div>

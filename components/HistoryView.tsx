@@ -31,6 +31,23 @@ export const HistoryView: React.FC<HistoryViewProps> = ({
   const [searchQuery, setSearchQuery] = useState('');
   const [filterMode, setFilterMode] = useState<'all' | 'day' | 'night'>('all');
 
+  const translateCategory = (cat: string) => {
+    return cat
+      .replace(/Good/gi, 'Baik')
+      .replace(/Pristine Air/gi, 'Udara Sangat Bersih')
+      .replace(/Moderate/gi, 'Sedang')
+      .replace(/Sensitive/gi, 'Sensitif')
+      .replace(/Unhealthy/gi, 'Tidak Sehat')
+      .replace(/Smog Alert/gi, 'Peringatan Asap')
+      .replace(/Truly Dark Sky/gi, 'Langit Sangat Gelap')
+      .replace(/Typical/gi, 'Khas')
+      .replace(/Suburban Skyglow/gi, 'Pijar Langit Pinggiran Kota')
+      .replace(/Suburban/gi, 'Pinggiran Kota')
+      .replace(/Inner-City Skyglow/gi, 'Pijar Langit Dalam Kota')
+      .replace(/Inner-City/gi, 'Dalam Kota')
+      .replace(/Rural\/Suburban Transition/gi, 'Transisi Pedesaan/Pinggiran Kota');
+  };
+
   const filteredScans = scans.filter((item) => {
     const matchesSearch = 
       item.coordinates.locationName.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -69,9 +86,9 @@ export const HistoryView: React.FC<HistoryViewProps> = ({
               <History className="w-4 h-4 text-[#DCFD8B]" />
             </div>
             <div>
-              <h2 className="text-sm font-black text-white">Atmospheric Scan Logs</h2>
+              <h2 className="text-sm font-black text-white">Log Pemindaian Atmosfer</h2>
               <p className="text-[10px] text-slate-400 font-medium">
-                {scans.length} Encrypted Local Records
+                {scans.length} Catatan Lokal Terenkripsi
               </p>
             </div>
           </div>
@@ -80,10 +97,10 @@ export const HistoryView: React.FC<HistoryViewProps> = ({
             onClick={handleExportJson}
             disabled={scans.length === 0}
             className="clay-button clay-button-slate py-1.5 px-2.5 text-[11px] font-bold flex items-center gap-1.5 active:scale-95 disabled:opacity-40"
-            title="Export all scans to JSON"
+            title="Ekspor semua pemindaian ke JSON"
           >
             <Download className="w-3.5 h-3.5 text-[#DCFD8B]" />
-            <span>Export</span>
+            <span>Ekspor</span>
           </button>
         </div>
 
@@ -92,7 +109,7 @@ export const HistoryView: React.FC<HistoryViewProps> = ({
           <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
           <input
             type="text"
-            placeholder="Search by location, AQI, Bortle..."
+            placeholder="Cari berdasarkan lokasi, AQI, Bortle..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full pl-9 pr-3 py-2 rounded-2xl bg-[#0E1422] border border-white/10 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#DCFD8B]/50 transition-colors"
@@ -109,7 +126,7 @@ export const HistoryView: React.FC<HistoryViewProps> = ({
                 : 'bg-[#0E1422] text-slate-400 hover:text-white border border-white/5'
             }`}
           >
-            All Logs ({scans.length})
+            Semua Riwayat ({scans.length})
           </button>
           <button
             onClick={() => setFilterMode('day')}
@@ -120,7 +137,7 @@ export const HistoryView: React.FC<HistoryViewProps> = ({
             }`}
           >
             <Sun className="w-3 h-3" />
-            Day Air
+            Udara Siang
           </button>
           <button
             onClick={() => setFilterMode('night')}
@@ -131,7 +148,7 @@ export const HistoryView: React.FC<HistoryViewProps> = ({
             }`}
           >
             <Moon className="w-3 h-3" />
-            Night Sky
+            Langit Malam
           </button>
         </div>
       </div>
@@ -143,9 +160,9 @@ export const HistoryView: React.FC<HistoryViewProps> = ({
             <History className="w-6 h-6 text-slate-500" />
           </div>
           <div>
-            <p className="text-sm font-bold text-white">No Scan Records Found</p>
+            <p className="text-sm font-bold text-white">Tidak Ada Catatan Pemindaian</p>
             <p className="text-xs text-slate-400 mt-1">
-              Capture your first environmental snapshot or reload the demonstration dataset.
+              Ambil foto lingkungan pertama Anda atau muat ulang kumpulan data demo.
             </p>
           </div>
           <button
@@ -156,7 +173,7 @@ export const HistoryView: React.FC<HistoryViewProps> = ({
             className="clay-button clay-button-lime py-2.5 px-4 text-xs font-bold inline-flex items-center gap-1.5 mt-2"
           >
             <Zap className="w-3.5 h-3.5" />
-            <span>Load Demo Scans</span>
+            <span>Muat Pemindaian Demo</span>
           </button>
         </div>
       ) : (
@@ -196,7 +213,7 @@ export const HistoryView: React.FC<HistoryViewProps> = ({
                       </span>
                     </div>
                     <p className="text-[11px] text-slate-400 truncate mt-0.5">
-                      {scan.analysis.primaryMetric.category}
+                      {translateCategory(scan.analysis.primaryMetric.category)}
                     </p>
                     <div className="flex items-center gap-2 text-[10px] text-slate-500 mt-1">
                       <span className="flex items-center gap-0.5">
@@ -204,7 +221,7 @@ export const HistoryView: React.FC<HistoryViewProps> = ({
                         {new Date(scan.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                       </span>
                       <span>•</span>
-                      <span>Vis: {scan.analysis.secondaryMetrics.visibilityKm}km</span>
+                      <span>Jarak Pandang: {scan.analysis.secondaryMetrics.visibilityKm}km</span>
                     </div>
                   </div>
                 </div>
@@ -229,7 +246,7 @@ export const HistoryView: React.FC<HistoryViewProps> = ({
                   <button
                     onClick={(e) => handleDelete(e, scan.id)}
                     className="p-2 rounded-xl text-slate-500 hover:text-[#FF823A] hover:bg-[#FF823A]/10 transition-colors"
-                    title="Delete Scan Record"
+                    title="Hapus Catatan Pemindaian"
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>
