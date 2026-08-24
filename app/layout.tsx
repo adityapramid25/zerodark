@@ -1,11 +1,21 @@
 import type { Metadata, Viewport } from 'next';
+import Script from 'next/script';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'ZeroDark Mobile: Pemindai Eco Dua Atmosfer',
+  title: 'ZeroDark: Dual-Atmosphere Scanner',
   description:
-    'Aplikasi web mobile Claymorphism interaktif untuk pemindaian ekologis dua atmosfer (Smog Kualitas Udara Siang Hari & Polusi Cahaya Malam Hari / Skala Bortle) dengan peta panas Leaflet interaktif dan simulasi kebijakan koridor gelap.',
-  keywords: ['ZeroDark', 'Claymorphism', 'AQI', 'Bortle Scale', 'Light Pollution', 'Eco-Scanner', 'Next.js 14'],
+    'Mobile-first Tactile Claymorphism Eco-Scanner powered by Google Teachable Machine Image Classification for Dual-Atmosphere analysis (Daytime Air Smog & Nighttime Light Pollution / Bortle Scale).',
+  keywords: [
+    'ZeroDark',
+    'Dual-Atmosphere Scanner',
+    'Teachable Machine',
+    'Claymorphism',
+    'Air Quality AQI',
+    'Bortle Scale',
+    'Light Pollution',
+    'Eco-Scanner',
+  ],
   authors: [{ name: 'ZeroDark Engineering' }],
 };
 
@@ -14,7 +24,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
-  themeColor: '#0B0F19',
+  themeColor: '#0B0F17',
 };
 
 export default function RootLayout({
@@ -23,8 +33,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id" className="dark">
-      <body className="bg-[#070A11] min-h-screen text-slate-100 antialiased selection:bg-[#DCFD8B] selection:text-[#0B0F19]">
+    <html lang="en" className="dark">
+      <head>
+        {/* Load TensorFlow.js and Teachable Machine via High-Speed CDN */}
+        <Script
+          src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"
+          strategy="beforeInteractive"
+        />
+        <Script
+          src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"
+          strategy="beforeInteractive"
+        />
+      </head>
+      <body className="bg-[#0B0F17] min-h-screen text-slate-100 antialiased selection:bg-emerald-500 selection:text-slate-950">
         {children}
       </body>
     </html>
